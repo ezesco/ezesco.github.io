@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+.contentBox {
+  height: 300px;
+  display: inline-block;
+  background: linear-gradient(blue, steelblue); 
+}
+
+/* THIS AREA IS FOR THE SCROLL BAR */
+/* THIS AREA IS FOR THE SCROLL BAR */
+/* THIS AREA IS FOR THE SCROLL BAR */
+
+body::-webkit-scrollbar {
+  width: .5em;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: navy;
+  outline: 1px solid slategrey;
+}
+
+/* THIS AREA IS FOR THE SCROLL BAR */
+/* THIS AREA IS FOR THE SCROLL BAR */
+/* THIS AREA IS FOR THE SCROLL BAR */
