@@ -1,6 +1,7 @@
 var main = function() {
-  setUpContentBoxes();
   window.onresize = setUpContentBoxes;
+  setUpContentBoxes(true);  
+  attachEventsForContentClick();
 }
 
 function $(string) {
@@ -15,10 +16,9 @@ function $(string) {
   } catch (e) {
     console.log("There was an error:\n" + e);
   }
-
 }
 
-function setUpContentBoxes() {
+function setUpContentBoxes(firstRun) {
   let minVisibleWidth = 360;
   let myBoxesArray = $(".contentBox");
   let currentScreenWidth = $("body")[0].offsetWidth;
@@ -33,7 +33,9 @@ function setUpContentBoxes() {
     box.style.width = desiredWidth + "px";
     box.style.height = desiredWidth + "px";
   }
-  
+  if (firstRun) {
+    setUpContentBoxes();
+  }
 }
 
 function formatPercentage( myFraction ) {
@@ -49,6 +51,37 @@ function formatPercentage( myFraction ) {
   if (fractionString[0] == "0" && fractionString[1] != ".") {fractionString = fractionString.slice(1);}
   return fractionString;
 }
+
+/* For showing services information */
+String.prototype.firstUpper = function () {
+  return this.slice(0,1).toUpperCase() + this.slice(1);
+}
+
+function attachEventsForContentClick() {
+  let contentBoxList = $(".contentBox");
+  for (let ele of contentBoxList) {
+    console.log(ele);
+    ele.addEventListener("click", function() { showBox(this); });
+  }
+}
+
+var lastBox;
+function showBox(htmlObj) {
+  console.log(htmlObj.id.firstUpper());
+  
+  let myDisplayBox = createDisplay(htmlObj);
+  
+  console.log(myDisplayBox.outerHTML);
+}
+
+function createDisplay(htmlObj) {
+  let myDisplayBox = document.createElement("div");
+  let myString = htmlObj.getAttribute("data-name");
+  let displayText = document.createTextNode(myString);
+  myDisplayBox.appendChild(displayText);
+  myDisplayBox.classList.add("");
+}
+/* For showing services information */
 
 
 window.onload = main;

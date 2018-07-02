@@ -13,6 +13,20 @@ body {
   background: linear-gradient(blue, steelblue); 
 }
 
+.contentBox:hover {
+  background: 
+    url("imgs/clickIcon.png") center no-repeat,
+    lightblue !important;
+  cursor: pointer;
+}
+
+#notaryServices {
+  background-image: url("imgs/signIcon.png"), linear-gradient(blue, steelblue);
+  background-position: center, 0 0;
+  background-size: 80%, cover;
+  background-repeat: no-repeat;
+}
+
 /* THIS AREA IS FOR THE SCROLL BAR */
 /* THIS AREA IS FOR THE SCROLL BAR */
 /* THIS AREA IS FOR THE SCROLL BAR */
