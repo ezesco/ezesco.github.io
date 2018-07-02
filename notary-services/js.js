@@ -4,6 +4,10 @@ var main = function () {
 	$("#about").addEventListener("click", function(){_launch("aboutPage")});
 	
 	$("#messageToUs").addEventListener("keyup", resizeTextArea);
+	
+	setUpSchedulePage();
+	$("#emailSelected").addEventListener("click", function(){_show($("#emailContainer"))});
+	$("#phoneSelected").addEventListener("click", function(){_show($("#phoneContainer"))});
 }
 
 function $(myString) {
@@ -47,6 +51,67 @@ function resizeTextArea() {
 		this.style.height = this.scrollHeight + "px";
 	}
 }
+
+function setUpSchedulePage() {
+	let dateInput = $("#myDay");
+	let timeInput = $("#myTime");
+	let currentDate = new Date();
+	let timeString;
+	if ( (currentDate.getHours()).toString().length < 2 ) {
+		timeString = "0" + currentDate.getHours();
+	} else {
+		timeString = (currentDate.getHours()).toString();
+	}
+	if ( (currentDate.getMinutes()).toString().length < 2 ) {
+		timeString += ":0" + currentDate.getMinutes();
+	} else {
+		timeString += ":"+currentDate.getMinutes();
+	}
+	timeInput.value = timeString;
+	let dateString = currentDate.getFullYear() + "-";
+	if ( (currentDate.getMonth()+1).toString().length < 2 ) {
+		dateString += "0"+ (currentDate.getMonth()+1) +"-"
+	} else {
+		dateString += currentDate.getMonth() + 1 +"-";
+	}
+	if ( (currentDate.getDate()+1).toString().length < 2 ) {
+		dateString += "0"+ currentDate.getDate()
+	} else {
+		dateString += currentDate.getDate();
+	}
+	dateInput.value = dateString;
+}
+
+function _show(elemnt) {
+	$("#emailContainer").style.display = "none";
+	$("#emailSelected").checked = false;
+	$("#phoneContainer").style.display = "none";
+	$("#phoneSelected").checked = false;
+	
+	elemnt.style.display = "block";
+	let theId = elemnt.id;
+	theId = theId.slice(0, -9);
+	$("#"+theId+"Selected").checked = true;
+}
+
+
+//calendar tools 
+Date.prototype.dayM = [
+	6,
+	0,
+	1,
+	2,
+	3,
+	4,
+	5
+]
+Date.prototype.getDayM = function () {
+	let normalDay = this.getDay();
+	let dayMString = this.dayM[normalDay];
+	return dayMString;
+}
+
+//end calendar tools 
 
 
 window.onload = main;

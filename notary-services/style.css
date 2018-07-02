@@ -74,6 +74,24 @@ header h1 {
 	background-size: 60%;
 }
 
+#schedulePage label {
+	display: block;
+	margin-top: .2em;
+}
+#schedulePage textarea {
+	outline: none;
+	resize: none;
+	overflow: hidden;
+	height: 4em;
+}
+#schedulePage #emailContainer,
+#schedulePage #phoneContainer {
+	display: none;
+}
+#schedulePage input[type="checkbox"] {
+	width: 1em;
+}
+
 #contact {
 	background-image: url("imgs/messageIcon.svg");
 	background-size: 75%;
@@ -93,7 +111,8 @@ header h1 {
 #messageToUs:focus {
 	border-color: blue;
 }
-#contactPage button {
+#contactPage button,
+#schedulePage button {
 	padding: 1em;
 	border-radius: 200px;
 	float: right;
@@ -117,6 +136,8 @@ header h1 {
 }
 .webPage h1 {
 	margin-bottom: 0;
+	text-decoration: underline;
+	color: rgb(30, 35, 60);
 }
 .webPage ul,
 .webPage p {
