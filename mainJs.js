@@ -87,11 +87,14 @@ function createDisplay(htmlObj) {
   let myString = htmlObj.getAttribute("data-name");
   let displayText = document.createTextNode(myString);
   let myContinueButton = document.createElement("button");
+  let myButtonLink = document.createElement("a");
+  myButtonLink.href = htmlObj.getAttribute("data-path");
   myContinueButton.appendChild(document.createTextNode("Continue"));
   myDisplayBox.appendChild(myDisplayContent);
   myDisplayContent.appendChild(displayText);
   myDisplayContent.appendChild(document.createElement("br"));
-  myDisplayContent.appendChild(myContinueButton);
+  myDisplayContent.appendChild(myButtonLink);
+  myButtonLink.appendChild(myContinueButton);
   myDisplayBox.classList.add("contentBox");
   myDisplayBox.id = "displayScreen";
   return myDisplayBox;
