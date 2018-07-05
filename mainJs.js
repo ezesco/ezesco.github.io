@@ -1,6 +1,6 @@
 var main = function() {
   window.onresize = setUpContentBoxes;
-  setUpContentBoxes(true);  
+  setUpContentBoxes(true);
   attachEventsForContentClick();
 }
 
@@ -44,7 +44,7 @@ function formatPercentage( myFraction ) {
   //This operation would not work with 1/1 or 0/2
   //to resolve this, I will return 100% if the length of slice here is less that 2
   if (fractionString.length < 1) { return "100%" }
-  fractionString += "00"; //this is to make sure there are enough units 
+  fractionString += "00"; //this is to make sure there are enough units
   fractionString = fractionString.slice(0,2) + "." + fractionString.slice(2); //"12.345" ex
   fractionString = fractionString.slice(0,5); //five units is enough units;
   fractionString += "%"; //gotta add that percent symbol for css functioning
@@ -60,26 +60,41 @@ String.prototype.firstUpper = function () {
 function attachEventsForContentClick() {
   let contentBoxList = $(".contentBox");
   for (let ele of contentBoxList) {
-    console.log(ele);
     ele.addEventListener("click", function() { showBox(this); });
   }
 }
 
 var lastBox;
 function showBox(htmlObj) {
-  console.log(htmlObj.id.firstUpper());
-  
+  let idForEvent;
+  if (lastBox) {
+    $("#displayScreen").outerHTML = lastBox.outerHTML;
+    idForEvent = lastBox.id;
+  }
+  lastBox = htmlObj.cloneNode(true);
   let myDisplayBox = createDisplay(htmlObj);
-  
-  console.log(myDisplayBox.outerHTML);
+  htmlObj.outerHTML = myDisplayBox.outerHTML;
+
+  if ( idForEvent ) {
+    $("#"+idForEvent).addEventListener("click", function() { showBox(this); });
+  }
+  setUpContentBoxes();
 }
 
 function createDisplay(htmlObj) {
   let myDisplayBox = document.createElement("div");
+  let myDisplayContent = document.createElement("div");
   let myString = htmlObj.getAttribute("data-name");
   let displayText = document.createTextNode(myString);
-  myDisplayBox.appendChild(displayText);
-  myDisplayBox.classList.add("");
+  let myContinueButton = document.createElement("button");
+  myContinueButton.appendChild(document.createTextNode("Continue"));
+  myDisplayBox.appendChild(myDisplayContent);
+  myDisplayContent.appendChild(displayText);
+  myDisplayContent.appendChild(document.createElement("br"));
+  myDisplayContent.appendChild(myContinueButton);
+  myDisplayBox.classList.add("contentBox");
+  myDisplayBox.id = "displayScreen";
+  return myDisplayBox;
 }
 /* For showing services information */
 

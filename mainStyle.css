@@ -2,22 +2,49 @@
   box-sizing: border-box;
 }
 
+button {
+  border-radius: 9999999px;
+  padding: 1em;
+  font-weight: bold;
+  outline: none;
+  font-family: monospace;
+}
+
 body {
   margin: 0;
+  text-align: center;
 }
 
 
 .contentBox {
   height: 300px;
-  display: inline-block;
-  background: linear-gradient(blue, steelblue); 
+  /*I dont understand why it needs to be float rather than inline... but it does*/
+  /* display: inline-block; */
+  float:left;
+  background: linear-gradient(blue, steelblue);
 }
 
-.contentBox:hover {
-  background: 
+.contentBox:not(#displayScreen):hover {
+  background:
     url("imgs/clickIcon.png") center no-repeat,
     lightblue !important;
   cursor: pointer;
+}
+
+#displayScreen {
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+  background: grey;
+  user-select: none;
+  display: flex;
+  align-items: flex-end;
+}
+
+#displayScreen>div {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
 }
 
 #notaryServices {
