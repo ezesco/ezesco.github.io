@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ezekiel's Development</title>
+ <style>
+   :root {
+     user-select: none;
+     font-size: 2em;
+   }
+   
+   body {
+  background-color: lightblue;
+  text-align: center;
+  padding: 0;
+     margin: 0;
+}
+   
+   header {
+     border: 1px solid transparent;
+     width: 750px;
+     margin: auto;
+     background-color: white;
+  animation-name: colorShiftBk;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+     
+   }
+   
+   .bkClass {
+     border: 1px solid transparent;
+  animation-name: colorShiftBk;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+     
+   }
+
+   
+h1 {
+  font-size: 3em;
+  color: black;
+  text-decoration: underline;
+  text-shadow: 1px 0 1px pink, -1px 0 1px pink, 0 1px 1px pink, 0 -1px 1px pink;
+  animation-name: colorShift;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+   ul {
+     list-style: none;
+     padding: 0;
+   }
+   li {
+     user-select: none;
+   }
+   
+   li:hover {
+     color: white;
+     background-color: gray;
+     font-weight: bold;
+   }
+   
+   .fullImg {
+     height: 100vh;
+     max-width: 100%;
+   }
+   .pop {
+     color: gold;
+     font-weight: bold;
+     text-shadow: 0px 1px black, 0px -1px black, 1px 0px black, -1px 0px black;
+   }
+   
+@keyframes colorShift {
+  0% {
+    color: black;
+  }
+  100% {
+    color: white
+  }
+}
+ @keyframes colorShiftBk {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: white
+  }
+}
+
+</style>
+    <script>
+      window.onload = function() {
+        let myPage = document.querySelectorAll("html")[0];
+        myPage = myPage.innerHTML;
+        let myPageSplit = myPage.split("<h2>");
+        myPage = myPageSplit.join("<hr><h2>");
+        document.querySelectorAll("html")[0].innerHTML = myPage;
+        
+        const items = document.querySelectorAll("*");
+        var itemIndex = 6;
+        document.onclick = function () {
+          items[itemIndex].scrollIntoView({behavior: "smooth", block: "start"});
+          console.log(itemIndex + "::" + items.length);
+          nextIndex();
+          if (itemIndex >= items.length - 1) {
+            itemIndex = 6;
+          }
+        }
+        
+        var notSlideShow = [
+          "HR",
+          "BR",
+          "UL",
+          "SPAN",
+          "MAIN",
+          "H1"
+        ];
+        function nextIndex() {
+          itemIndex++;
+          while (notSlideShow.includes(items[itemIndex].tagName)){
+            itemIndex++;
+          }
+        }
+        
+        document.querySelector("h2.pop").addEventListener("mouseover", function(){
+          this.style.fontSize = "13vh";
+          this.scrollIntoView({behavior: "smooth", block:"start"});
+          this.classList.add("bkClass");
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>All about ME </h1>
+    </header>
+    <main>
+      <h2>
+        Disclaimer:
+      </h2>
+      <ul>
+        <li>Highlight</li>
+        <li>Cherry Picked</li>
+      </ul>
+      <h2>
+        Name:
+      </h2>
+      <p>
+        Ezekiel.
+      </p>
+      <img alt="mom" src="momWDog.jpg" class="fullImg">
+      <ul>
+        <li>Single Mom</li>
+        <li>Grandma Named</li>
+        <li>Strength of God</li>
+      </ul>
+      <h2>
+        De donde eres?
+      </h2>
+      <ul>
+        <li>California</li>
+        <li>Arizona</li>
+        <li>Italy</li>
+        <li>Mexico</li>
+      </ul>
+      <h2>
+        Family?:
+      </h2>
+      <ul>
+        <li>Dad</li>
+        <li>Step-Mother</li>
+        <img src="dad.jpg" alt="Imagine a nice picture is here" class="fullImg">
+        <li>Mom</li>
+        <li>Step-Father</li>
+        <img style="height: 90vh; border: 1px solid black;" src="Broken.jpg" alt="I don't like my stepfather so there is no picture here">
+        <li>Brianna</li>
+        <li>Vivian</li>
+        <img src="Bri&Viv.jpg" class="fullImg">
+        <li>Rachel</li>
+        <li>Grace</li>
+        <img src="fam.jpg" class="fullImg">
+        <li>Alexander</li>
+        <img src="alexAndI.jpg" class="fullImg">
+        <li>Suki</li>
+        <img src="suki&Sara.jpg" class="fullImg">
+        <li>Rachel F</li>
+        <img src="rachelDamn.jpg" class="fullImg">
+      </ul>
+      <h2>
+        Hobbies or Interests:
+      </h2>
+      <ul>
+        <li>Piano</li>
+        <li>Coding</li>
+        <img src="code.jpg" class="fullImg">
+        <li>Ice Skating</li>
+      </ul>
+      <h2>
+        Foundation <span style="color: red;">&amp;amp;</span> Strength<br> Grounded and Going
+      </h2>
+      <ul>
+        <li>Sisters taught patience</li>
+        <li>Sales taught perserverance</li>
+        <li>Buddhism taught acceptance</li>
+      </ul>
+      <h2>
+        Mottos &amp; Beliefs
+      </h2>
+      <ul>
+        <li>Trying is better than not</li>
+        <li>It just is</li>
+        <li>Remember the goal</li>
+        <li>The world is mental</li>
+        <li>Do you</li>
+        <li>Is doing arrogance or not doing cowardice?</li>
+      </ul>
+      <h2>
+        Class reflection
+      </h2>
+      <ul>
+        <li>There is an actual study of wellness</li>
+        <li>Cancer treatment</li>
+        <li>Motivational Speakers</li>
+        <li>John Green</li>
+      </ul>
+      <h2>
+        Summer Lessons
+      </h2>
+      <ul>
+        <li>Knowledge <span style="font-family: comic-sans; color: gold;">vs.</span> Application</li>
+        <li>Prioritizing</li>
+      </ul>
+      <h2>
+        Grade
+      </h2>
+      <ul>
+        <li>Before? <span class="pop" style="color: gold; font-weight: bold;">C</span></li>
+        <li>Now? <span class="pop" style="color: gold; font-weight: bold;">C+</span></li>
+        <li>Hope? <span class="pop" style="color: gold; font-weight: bold;">A+ (possibly SSS++ if exists)</span></li>
+      </ul>
+      <h2 class="pop">
+        Wants for Future
+      </h2>
+    </main>
+  </body>
+</html>
