@@ -1,0 +1,92 @@
+:root {
+  background-color: pink;
+  font-size: 3em;
+}
+
+#momDogImg {
+  width: 90%;
+  margin: auto;
+  margin-top: 2em;
+  background: url("momDogResized.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  animation: dogImg;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  -webkit-animation: dogImg;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+main, footer {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  text-shadow: 0 0 1em black;
+}
+
+p {
+  text-align: left;
+  padding: 1em;
+}
+
+
+
+@keyframes dogImg {
+  from {
+    background: url("momDogResized.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  33% {
+    background: url("momDog2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  66% {
+    background: url("momDog3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  to {
+    background: url("momDogResized.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+}
+
+@-webkit-keyframes dogImg {
+  from {
+    background: url("momDogResized.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  33% {
+    background: url("momDog2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  66% {
+    background: url("momDog3.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+  to {
+    background: url("momDogResized.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-position: center;
+  }
+}
