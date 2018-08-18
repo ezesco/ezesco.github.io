@@ -89,7 +89,15 @@ header h1 {
 	display: none;
 }
 #schedulePage input[type="checkbox"] {
-	width: 1em;
+    border: 2px solid #555;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    padding: 4px;
+}
+#schedulePage input[type="checkbox"]:checked {
+    background: #555;
+    background-clip: content-box;
 }
 
 #contact {
@@ -125,6 +133,19 @@ header h1 {
 #about {
 	background-image: url("imgs/questionIcon.svg");
 	background-size: 80%;
+}
+
+#pay {
+  background-image: url("imgs/paypalIcon.svg");
+  background-size: 72%;
+}
+
+#payPage {
+  text-align: center;
+}
+
+#payPage form {
+  margin-top: 1em;
 }
 
 .webPage {

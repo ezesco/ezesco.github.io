@@ -1,7 +1,8 @@
 var main = function () {
-	$("#schedule").addEventListener("click", function(){_launch("schedulePage")});
-	$("#contact").addEventListener("click", function(){_launch("contactPage")});
-	$("#about").addEventListener("click", function(){_launch("aboutPage")});
+	$("#schedule").addEventListener("click", function(){_launch("schedulePage");});
+	$("#contact").addEventListener("click", function(){_launch("contactPage");});
+	$("#about").addEventListener("click", function(){_launch("aboutPage");});
+  $("#pay").addEventListener("click", function(){_launch("payPage")});
 	
 	$("#messageToUs").addEventListener("keyup", resizeTextArea);
 	
@@ -29,15 +30,17 @@ function $(myString) {
 var pageActive;
 function _launch ( page ) {
 	if (pageActive) {
-		pageActive.className = pageActive.className.split("circleActive")[0];
+		pageActive.classList.remove("circleActive");
 	}
 	pageActive = $("#"+page.slice(0,-4));
-	pageActive.className += " circleActive ";
-	let webpages = $(".webPage");
-	for (webpage of webpages) {
+	pageActive.classList.add("circleActive");
+	const webpages = $(".webPage");
+	for (const webpage of webpages) {
 		webpage.style.display = "none";
 	}
 	$("#"+page).style.display = "block";
+  
+  $("#"+page).scrollIntoView({block : "start", behavior : "smooth"});
 }
 
 var textLastHeight;
