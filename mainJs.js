@@ -78,6 +78,11 @@ function showBox(htmlObj) {
   if ( idForEvent ) {
     $("#"+idForEvent).addEventListener("click", function() { showBox(this); });
   }
+  
+  
+  const pageToOpen = htmlObj.getAttribute("data-name").toLowerCase().trim().split(" ").join("-");
+  $("#displayScreen").querySelector("button").addEventListener("click", function() { window.open(pageToOpen); });
+  
   setUpContentBoxes();
 }
 
@@ -94,8 +99,10 @@ function createDisplay(htmlObj) {
   myDisplayContent.appendChild(myContinueButton);
   myDisplayBox.classList.add("contentBox");
   myDisplayBox.id = "displayScreen";
+  
   return myDisplayBox;
 }
+
 /* For showing services information */
 
 
