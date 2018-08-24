@@ -4,6 +4,7 @@
 
 body {
 	background-color: rgb(240, 245, 270);
+  margin: 0;
 }
 
 body::-webkit-scrollbar {
@@ -22,13 +23,19 @@ body::-webkit-scrollbar-thumb {
 header {
 	text-align: center;
 	border-bottom: 1px solid black;
+  background: url("http://accesstoindependence.org/wp-content/uploads/2015/10/escondido.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3em;
 }
 
 header h1 {
 	font-size: 5vmax;
-	text-shadow: 0 0 1px;
+/* 	text-shadow: 0 0 1px white; */
+	text-shadow: 1px 0px white, -1px 0px white, 0px -1px white, 0px 1px white;
 	text-decoration: underline;
 	color: rgb(30, 35, 60);
+  margin: 0;
 }
 
 #circleDisplayContainer {
@@ -65,13 +72,15 @@ header h1 {
 }
 
 #call {
-	background-image: url("imgs/callIcon.svg");
-	background-size: 80%;
+	background-image: url("imgs/textCall.svg"), url("imgs/callIcon.svg");
+	background-size: 106%, 80%;
+  background-position: 178% 64%, 50% 50%;
 }
 
 #schedule {
-	background-image: url("imgs/calendarIcon.svg");
-	background-size: 60%;
+	background-image: url("imgs/textSchedule.svg"), url("imgs/calendarIcon.svg");
+	background-size: 168%, 60%;
+  background-position: 35% 85%, 50% 50%;
 }
 
 #schedulePage label {
@@ -101,8 +110,9 @@ header h1 {
 }
 
 #contact {
-	background-image: url("imgs/messageIcon.svg");
-	background-size: 75%;
+	background-image: url("imgs/textMessage.svg"), url("imgs/messageIcon.svg");
+	background-size: 168%, 75%;
+  background-position: 35% 85%, 50% 50%;
 }
 
 #messageToUs {
@@ -131,13 +141,15 @@ header h1 {
 }
 
 #about {
-	background-image: url("imgs/questionIcon.svg");
-	background-size: 80%;
+	background-image: url("imgs/textInfo.svg"), url("imgs/questionIcon.svg");
+	background-size: 168%, 80%;
+  background-position: 0% 85%, 50% 50%;
 }
 
 #pay {
-  background-image: url("imgs/paypalIcon.svg");
-  background-size: 72%;
+  background-image: url("imgs/textPay.svg"), url("imgs/paypalIcon.svg");
+  background-size: 168%, 72%;
+  background-position: -4% 85%, 50% 50%;
 }
 
 #payPage {
@@ -148,7 +160,7 @@ header h1 {
   margin-top: 1em;
 }
 
-.webPage {
+.webPage, #notice {
 	display: none;
 	font-size: 2em;
 	width: 90%;
@@ -164,10 +176,72 @@ header h1 {
 .webPage p {
 	margin-top: 0;
 }
-#initial {
+#initial, #notice {
 	display: block;
 	text-align: center;
 }
+#notice {
+  width: 100%;
+  
+	-webkit-animation: color_change 1s infinite alternate;
+	-moz-animation: color_change 1s infinite alternate;
+	-ms-animation: color_change 1s infinite alternate;
+	-o-animation: color_change 1s infinite alternate;
+	animation: color_change 1s infinite alternate;
+}
+
+@-webkit-keyframes color_change {
+	from { 
+    background-color: blue;
+    color: black;
+  }
+	to { 
+    background-color: darkgreen;
+    color: white;
+  }
+}
+@-moz-keyframes color_change {
+	from { 
+    background-color: blue;
+    color: black;
+  }
+	to { 
+    background-color: darkgreen;
+    color: white;
+  }
+}
+@-ms-keyframes color_change {
+	from { 
+    background-color: blue;
+    color: black;
+  }
+	to { 
+    background-color: darkgreen;
+    color: white;
+  }
+}
+@-o-keyframes color_change {
+	from { 
+    background-color: blue;
+    color: black;
+  }
+	to { 
+    background-color: darkgreen;
+    color: white;
+  }
+}
+@keyframes color_change {
+	from { 
+    background-color: blue;
+    color: black;
+  }
+	to { 
+    background-color: darkgreen;
+    color: white;
+  }
+}
+
+
 
 @media only screen and (max-width: 500px) {
 	header h1 {
@@ -179,7 +253,7 @@ header h1 {
 		height: 60vw;
 	}
 	
-	.webPage {
+	.webPage, #notice {
 		width: 100%;
 	}
 }
