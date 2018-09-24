@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb {
 header {
 	text-align: center;
 	border-bottom: 1px solid black;
-  background: url("http://accesstoindependence.org/wp-content/uploads/2015/10/escondido.png");
+  background: url("imgs/escondido.png");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 3em;
@@ -42,6 +42,7 @@ header h1 {
 	margin: auto;
 	padding-top: 1em;
 	text-align: center;
+  user-select: none;
 }
 
 .circleDisplay {
