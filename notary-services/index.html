@@ -67,15 +67,16 @@
   </div>
   <div class="webPage" id="schedulePage">
     <h1>Schedule an Appt:</h1>
-    <form>
-      <label>Name <input id="myName" type="name"><label>
+    <form action="https://formspree.io/your@email.com"
+      method="POST">
+      <label>Name <input name="name" id="myName" type="name"><label>
 			<label>Email <input id="emailSelected" type="checkbox"></label>
       <label>Phone <input id="phoneSelected" type="checkbox"></label>
-      <label id="emailContainer">Email Address: <input id="myEmail" type="email"></label>
-      <label id="phoneContainer">Phone Number: <input id="myPhone" type="phone"></label>
-      <label>Select a day: <input id="myDay" type="date" value="2018-06-26"></label>
-      <label>Select a time: <input id="myTime" type="time"></label>
-      <label>Enter an address: <textarea placeholder="1507 E Valley Pkwy    Ste 3 Num 347    Escondido, CA 92027"></textarea></label>
+      <label id="emailContainer">Email Address: <input name="email" id="myEmail" type="email"></label>
+      <label id="phoneContainer">Phone Number: <input name="phone" id="myPhone" type="phone"></label>
+      <label>Select a day: <input name="date" id="myDay" type="date" value="2018-06-26"></label>
+      <label>Select a time: <input name="time" id="myTime" type="time"></label>
+      <label>Enter an address: <textarea name="address" placeholder="1507 E Valley Pkwy    Ste 3 Num 347    Escondido, CA 92027"></textarea></label>
       <button type="button">Submit!</button>
       <br style="clear: both;">
     </form>
@@ -83,8 +84,9 @@
   <div class="webPage" id="contactPage">
     <h1>Send me a message</h1>
     <p>If you need to get in touch with me quickly, I highly reccomend <a href="tel:7606793180">calling</a> and leaving a voice mail.</p>
-    <form>
-      <textarea placeholder="Say Something :) ..." id="messageToUs"></textarea>
+    <form action="https://formspree.io/your@email.com"
+      method="POST">
+      <textarea name="saySomething" placeholder="Say Something :) ..." id="messageToUs"></textarea>
       <button type="button">Submit!</button>
       <br style="clear: both;">
     </form>
