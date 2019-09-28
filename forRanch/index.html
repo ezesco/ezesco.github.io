@@ -1,1 +1,215 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>How long have you worked?</title>
+    <style>
+      body {
+        background-color: lightgreen;
+      }
+	  table {
+		height: 100%;
+		background-color: lightblue;
+	  }
+	  table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	  }
+	  th {
+		padding : 0.5em;
+	  }
+	  td>input[type="time"] {
+		height: 100%;
+		background-color: silver;
+	  }
+	  #runButton {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		padding: .5em 1em .5em 1em;
+		font-weight: bold;
+		background-color: navy;
+		color: lightblue;
+		border-radius: 5px;
+		font-size: 1.5em;
+	  }
+	  
+	  #runButton:hover {
+		background-color: lightblue;
+		color: navy;
+		cursor: pointer;
+	  }
+	  #outputArea {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		min-width: 100px;
+		max-width: 500px;
+		min-height: 50px;
+		max-height: 250px;
+		background-color: navy;
+		border-radius: 5px;
+		border: 1px solid silver;
+		
+		color: lightblue;
+		font-size: 1.5em;
+		text-align: center;
+		font-weight: bold;
+	  }
+	  
+	  .emptyInput {
+		background-color: pink !important;
+	  }
+	  
+	  #totals td {
+		text-align: center;
+	  }
+    </style>
+	<script>
+		const main = function () {
+			createTable();
+			$("#runButton")[0].onclick = run;
+			
+		}
+		function createTable() {
+			const myTable = document.createElement("table");
+			const myRows = ["In", "Out", "In", "Out"];
+			const myColumns = "Mon,Tues,Weds,Thurs,Fri".split(",");
+			
+			//Create Heading Row
+			const myThTr = document.createElement("tr");
+			const emptyTh = document.createElement("th");
+			myThTr.appendChild(emptyTh);
+			for (e of myColumns) {
+				const myTh = document.createElement("th");
+				const theText = e;
+				const myThTextNode = document.createTextNode(theText);
+				myTh.appendChild(myThTextNode);
+				myThTr.appendChild(myTh);
+			}
+			myTable.appendChild(myThTr);
+			
+			for (e of myRows) {
+				const aRow = document.createElement("tr");
+				
+				//Row Header
+				const aRowTh = document.createElement("th");
+				const aRowThText = e;
+				const aRowThTextNode = document.createTextNode(aRowThText);
+				aRowTh.appendChild(aRowThTextNode);
+				aRow.appendChild(aRowTh);
+				
+				for (ea of myColumns) {
+					const aTd = document.createElement("td");
+					aRow.appendChild(aTd);
+					giveInputElement(aTd);
+				}
+				myTable.appendChild(aRow);
+			}
+			//Totals
+			const outputRow = document.createElement("tr");
+			outputRow.id = "totals";
+			const rowLabel = document.createElement("th");
+			const rowLabelText = document.createTextNode("Totals");
+			rowLabel.appendChild(rowLabelText);
+			outputRow.appendChild(rowLabel);
+			for ( e of myColumns ) {
+				const outputTd = document.createElement("td");
+				outputRow.appendChild(outputTd);
+			}
+			myTable.appendChild(outputRow);
+			
+			$("body")[0].appendChild(myTable);
+			
+			function giveInputElement(td) {
+				const myInput = document.createElement("input");
+				myInput.type = "time";
+				td.appendChild(myInput);
+			}
+		}
+		var totalTime;
+		function run() {
+			const areInputsEmpty = checkInputsForEmpty();
+			if (areInputsEmpty) {
+				alert("There are some empty inputs");
+			}
+			showDailyTotals();
+			showTotal(totalTime);
+		}
+		
+		function checkInputsForEmpty() {
+			//returns true when one or more is empty and turns empty to red 
+			let isEmpty = false;
+			for ( e of $("input") ){
+				if ( e.value == "") {
+					e.classList.add("emptyInput");
+					isEmpty = true;
+				} else {
+					e.classList.remove("emptyInput");
+				}
+			}
+			return isEmpty;
+			
+		}
+		
+		function showDailyTotals() {
+			totalTime = 0;
+			const totalTds = $("#totals td");
+			let i = 2;
+			for (e of totalTds) {
+				const clockedTimes = $("td:nth-child("+i+") input");
+				
+				//checks if any in the column are empty and if so skipps this itteration
+				let columnHasEmpty = false;
+				for ( ea of clockedTimes ) {
+					if ( ea.value == "" ) {
+						columnHasEmpty = true;
+					}
+				}
+				if (columnHasEmpty) { continue; };
+				
+				const in1 = clockedTimes[0].valueAsDate;
+				const out1 = clockedTimes[1].valueAsDate;
+				const in2 = clockedTimes[2].valueAsDate;
+				const out2 = clockedTimes[3].valueAsDate;
+				
+				const shift1 = out1 - in1;
+				const shift2 = out2 - in2;
+				const secondsWorked = (shift1 + shift2)/1000; //devide 1000 because default date is miliseconds
+				const minutesWorked = secondsWorked/60;
+				const minutesLeftOver = minutesWorked % 60;
+				const minutesFormatted = minutesLeftOver > 9 ? minutesLeftOver : "0" + minutesLeftOver;
+				const hoursWorked = (minutesWorked - minutesLeftOver) / 60;
+				const hoursFormatted = hoursWorked > 9 ? hoursWorked : "0" + hoursWorked;
+				const formattedTime = hoursFormatted + ":" + minutesFormatted;
+				
+				e.innerHTML = formattedTime;
+				
+				i++;
+				
+				totalTime += minutesWorked;
+			}
+		}
+		
+		function showTotal(minutes) {
+			const myOutput = $("#outputArea")[0] ;
+			
+			const minutesLeftOver = minutes % 60;
+			const minutesFormatted = minutesLeftOver > 9 ? minutesLeftOver : "0" + minutesLeftOver;
+			const hoursWorked = (minutes - minutesLeftOver) / 60;
+			const hoursFormatted = hoursWorked > 9 ? hoursWorked : "0" + hoursWorked;
+			const formattedTime = hoursFormatted + ":" + minutesFormatted;
+			
+			myOutput.innerHTML = formattedTime;
+		}
+		function $(string){
+			return document.querySelectorAll(string);
+		}
+		window.onload = main;
+	</script>
+  </head>
+  <body>
+		<div id="outputArea">
+		</div>
+		<button id="runButton">Run</button>
+  </body>
+</html>
