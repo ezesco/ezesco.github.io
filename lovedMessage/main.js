@@ -37,6 +37,7 @@ async function fillPage() {
   [...$(".targetName")].forEach(e => e.innerText = idInfo["reciever"]);
   [...$(".senderName")].forEach(e => e.innerText = idInfo["sender"]);
   $(".messageContainer p")[0].innerText = idInfo["message"];
+  $("title")[0].innerText = "<3  "+ idInfo["reciever"] + "  <3";
 }
 
 function equipSendMessage() {
