@@ -1,0 +1,85 @@
+:root {
+  --c1: #758494;
+  --c2: #49231c;
+  --c3: #a28582;
+  --c4: #f15d68;
+  --c5: #7a0811;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: left 0/15% url("./resources/bkrndHeart.png") var(--c2);
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: var(--c4);
+  text-shadow: 1q 1q white,
+              -1q -1q var(--c5),
+              0px 1q var(--c5),
+              1q 0px var(--c5),
+              0px -1q var(--c5),
+              -1q 0px var(--c5);
+  cursor: pointer;
+}
+
+h3 {
+  text-align: center;
+}
+
+hr {
+  width: 100%;
+  border: 5px solid var(--c2)
+}
+
+input {
+  font-size: inherit;
+}
+textarea {
+  width: 100%;
+  font-size: inherit;
+}
+
+.dropDownIcon {
+  color: var(--c1);
+  text-shadow: 1q 1q white,
+  -1q -1q white,
+  0px 1q white,
+  1q 0px white,
+  0px -1q white,
+  -1q 0px white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropDownIcon:hover {
+  color: var(--c4);
+}
+
+.mainContainer {
+  background-color: rgba(260, 260, 260, 0.4);
+  display: flex;
+    flex-direction: column;
+  padding: 1em 2em;
+  margin: 1em 0.5em;
+  border-radius: 25px;
+  font-size: 2em;
+  color: black;
+  font-weight: bold;
+  /* color: var(--c3);
+  text-shadow: 1q 1q black,
+              -1q -1q black,
+              0px 1q black,
+              1q 0px black,
+              0px -1q black,
+              -1q 0px black; */
+}
+
+.EAL_noShow {
+  display: none;
+}
