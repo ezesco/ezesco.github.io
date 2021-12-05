@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  inset: 0;
+}
+
+.app {
+  max-width: 600px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 70% 10% 10%;
+  height: 100%;
+  width: 100%;
+}
+
+.app * {
+  font-size: 2rem;
+}
+
+textarea, input[type="text"] {
+  grid-column: span 4;
+}
+
+input[type="text"] {
+  text-align: center;
+}
+
+label {
+  user-select: none;
+  grid-column: span 2;
+}
+
+.app > div, label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input:checked + label {
+  background-color: lightblue;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+button[name="submit"] {
+  grid-column: 2 / span 2
+}
