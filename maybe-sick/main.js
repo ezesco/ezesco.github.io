@@ -6,7 +6,6 @@ window.addEventListener("load", async function main () {
     $(".wavy-js").forEach(el => {
       const txt = el.innerText;
       el.innerHTML = [...txt].map(s => `<span>${s}</span>`).join("");
-      console.log(el.innerHTML);
     });
   })();
 });
