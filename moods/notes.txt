@@ -1,0 +1,1 @@
+In future only add the build to root website directory, and put src files into a seperate repo on git. 
